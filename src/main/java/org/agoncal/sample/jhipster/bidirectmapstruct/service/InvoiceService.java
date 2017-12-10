@@ -1,17 +1,18 @@
 package org.agoncal.sample.jhipster.bidirectmapstruct.service;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.agoncal.sample.jhipster.bidirectmapstruct.domain.Invoice;
 import org.agoncal.sample.jhipster.bidirectmapstruct.repository.InvoiceRepository;
 import org.agoncal.sample.jhipster.bidirectmapstruct.service.dto.InvoiceDTO;
 import org.agoncal.sample.jhipster.bidirectmapstruct.service.mapper.InvoiceMapper;
+import org.agoncal.sample.jhipster.bidirectmapstruct.service.mapper.MappedInvoiceTrackingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Invoice.
@@ -39,7 +40,7 @@ public class InvoiceService {
      */
     public InvoiceDTO save(InvoiceDTO invoiceDTO) {
         log.debug("Request to save Invoice : {}", invoiceDTO);
-        Invoice invoice = invoiceMapper.toEntity(invoiceDTO);
+        Invoice invoice = invoiceMapper.toEntity(invoiceDTO, new MappedInvoiceTrackingContext());
         invoice = invoiceRepository.save(invoice);
         return invoiceMapper.toDto(invoice);
     }

@@ -1,11 +1,13 @@
 package org.agoncal.sample.jhipster.bidirectmapstruct.service.dto;
 
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * A DTO for the Invoice entity.
@@ -25,6 +27,8 @@ public class InvoiceDTO implements Serializable {
     @NotNull
     @Size(max = 32)
     private String terms;
+
+    private Set<InvoiceLineDTO> lines = new HashSet<>();
 
     private Set<ContactDTO> responsibles = new HashSet<>();
 
@@ -66,6 +70,14 @@ public class InvoiceDTO implements Serializable {
 
     public void setTerms(String terms) {
         this.terms = terms;
+    }
+
+    public Set<InvoiceLineDTO> getLines() {
+        return lines;
+    }
+
+    public void setLines(Set<InvoiceLineDTO> lines) {
+        this.lines = lines;
     }
 
     public Set<ContactDTO> getResponsibles() {

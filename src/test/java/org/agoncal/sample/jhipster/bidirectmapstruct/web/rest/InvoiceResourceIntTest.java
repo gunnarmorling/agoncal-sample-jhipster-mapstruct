@@ -349,11 +349,4 @@ public class InvoiceResourceIntTest {
         invoiceDTO1.setId(null);
         assertThat(invoiceDTO1).isNotEqualTo(invoiceDTO2);
     }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(invoiceMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(invoiceMapper.fromId(null)).isNull();
-    }
 }
