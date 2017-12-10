@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Invoice Lines</span>
+        <button class="btn btn-primary float-right jh-create-entity create-invoice-line" [routerLink]="['/', { outlets: { popup: ['invoice-line-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Invoice Line
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="invoiceLines">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Description</span></th>
+            <th><span>Quantity</span></th>
+            <th><span>Unit Cost</span></th>
+            <th><span>Sub Total</span></th>
+            <th><span>Invoice</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let invoiceLine of invoiceLines ;trackBy: trackId">
+                <td><a [routerLink]="['../invoice-line', invoiceLine.id ]">{{invoiceLine.id}}</a></td>
+                <td>{{invoiceLine.description}}</td>
+                <td>{{invoiceLine.quantity}}</td>
+                <td>{{invoiceLine.unitCost}}</td>
+                <td>{{invoiceLine.subTotal}}</td>
+                <td>
+                    <div *ngIf="invoiceLine.invoiceId">
+                        <a [routerLink]="['../invoice', invoiceLine.invoiceId  ]" >{{invoiceLine.invoiceNumber}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../invoice-line', invoiceLine.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'invoice-line/'+ invoiceLine.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'invoice-line/'+ invoiceLine.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

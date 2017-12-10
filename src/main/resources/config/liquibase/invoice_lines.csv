@@ -1,0 +1,6 @@
+id;description;quantity;unit_cost;sub_total;invoice_id
+1102;Keyboard;2;100;200;1051
+1104;2Gb of RAM;1;59;59;1052
+1103;Mouse;2;99;198;1051
+1105;SD Card;3;19;57;1052
+1101;Brand new iMac Pro;1;5000;5000;1051

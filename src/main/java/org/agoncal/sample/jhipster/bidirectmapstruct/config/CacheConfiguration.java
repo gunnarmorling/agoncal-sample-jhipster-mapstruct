@@ -41,6 +41,11 @@ public class CacheConfiguration {
             cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.Invoice.class.getName(), jcacheConfiguration);
+            cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.Invoice.class.getName() + ".lines", jcacheConfiguration);
+            cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.Invoice.class.getName() + ".responsibles", jcacheConfiguration);
+            cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.InvoiceLine.class.getName(), jcacheConfiguration);
+            cm.createCache(org.agoncal.sample.jhipster.bidirectmapstruct.domain.Contact.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

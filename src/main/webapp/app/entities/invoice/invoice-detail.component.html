@@ -1,0 +1,43 @@
+
+<div *ngIf="invoice">
+    <h2><span>Invoice</span> {{invoice.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{invoice.title}}</span>
+        </dd>
+        <dt><span>Number</span></dt>
+        <dd>
+            <span>{{invoice.number}}</span>
+        </dd>
+        <dt><span>Vat Rate</span></dt>
+        <dd>
+            <span>{{invoice.vatRate}}</span>
+        </dd>
+        <dt><span>Terms</span></dt>
+        <dd>
+            <span>{{invoice.terms}}</span>
+        </dd>
+        <dt><span>Responsibles</span></dt>
+        <dd>
+            <span *ngFor="let responsibles of invoice.responsibles; let last = last">
+                <a [routerLink]="['/contact', responsibles?.id ]">{{responsibles.lastName}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'invoice/'+ invoice.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

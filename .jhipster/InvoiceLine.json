@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "invoice",
+            "otherEntityName": "invoice",
+            "otherEntityField": "number"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "unitCost",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "subTotal",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20171208091823",
+    "entityTableName": "invoice_line",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false
+}
